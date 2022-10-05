@@ -1,6 +1,7 @@
 package com.phonedirectory.app.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,7 @@ public class ContactController {
     }
     
     @RequestMapping(method = RequestMethod.GET,value ="/contacts/{contactId}")
-    public Contact getContact(@PathVariable String contactId){
+    public Optional<Contact> getContact(@PathVariable int contactId){
         return contactService .getContact(contactId);
     }
 
@@ -35,12 +36,12 @@ public class ContactController {
     //in a selected record -- if we are updating the whole record then put can be used 
     //patch responds back at a lesser time line (similar to replacing a bail in cricket kit rather than replacing the whole kit bag)
     @RequestMapping(method = RequestMethod.PATCH,value="/contacts/{contactId}")
-    public void updateContact(@RequestBody Contact contact, @PathVariable String contactId){
+    public void updateContact(@RequestBody Contact contact, @PathVariable int contactId){
         contactService.updateContact(contact,contactId );
     }
 
     @RequestMapping(method = RequestMethod.DELETE,value ="/contacts/{contactId}")
-    public void deleteContact(@PathVariable String contactId){
+    public void deleteContact(@PathVariable int contactId){
         contactService.deleteContact(contactId);
     }
 }

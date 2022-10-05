@@ -5,23 +5,25 @@ import jakarta.persistence.Id;
 
 @Entity 
 public class Contact {
-
     @Id
-    private String contactId;
+    private int contactId;
     private String countryCode;
     private String primaryMobileNumber;
     private String secondaryMobileNumber;
     private int userId;
 
+    public Contact(){
+
+    }
     
-    public Contact(String contactId, String countryCode,String primaryMobileNumber, String secondaryMobileNumber, int userId) {
+    public Contact(int contactId, String countryCode,String primaryMobileNumber, String secondaryMobileNumber, int userId) {
         this.contactId = contactId;
         this.countryCode = countryCode;
         this.primaryMobileNumber = primaryMobileNumber;
         this.secondaryMobileNumber = secondaryMobileNumber;
         this.userId = userId;
     }
-    public String getContactId() {
+    public int getContactId() {
         return contactId;
     }
     public String getCountryCode(){

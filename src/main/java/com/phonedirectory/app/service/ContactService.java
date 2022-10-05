@@ -3,6 +3,7 @@ package com.phonedirectory.app.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class ContactService {
     ContactRepository contactRepository;
 //Mutable arraylist
     private List<Contact> contacts = new ArrayList<Contact>(Arrays.asList(
-        new Contact("1", "91","9842307770", "8072600679", 1),
-        new Contact("2", "91","9842307770", "8072600679", 1) 
+        new Contact(1, "91","9842307770", "8072600679", 1),
+        new Contact(2, "91","9842307770", "8072600679", 1) 
     ));
     
     
@@ -29,26 +30,28 @@ public class ContactService {
         return contacts;
     }
 
-    public Contact getContact(String contactId){
-        return contacts.stream().filter(t -> t.getContactId().equals(contactId)).findFirst().get();
+    public Optional<Contact> getContact(int contactId){
+       return contactRepository.findById(contactId);
     }
 
     public void addContact(Contact contact){
             contactRepository.save(contact);
-            //contacts.add(contact);
+           // contacts.add(contact);
     }
 
-    public void updateContact(Contact contact ,String contactId){
-        for(int index = 0;index<contacts.size();index++){
+    public void updateContact(Contact contact ,int contactId){
+        /* for(int index = 0;index<contacts.size();index++){
             Contact c = contacts.get(index);
             if(c.getContactId().equals(contactId)){
                 contacts.set(index, contact);
                 return;
             }
-        }
+        } */
+        contactRepository.save(contact);
     }
 
-    public void deleteContact(String contactId){
-        contacts.removeIf(t -> t.getContactId().equals(contactId));
+    public void deleteContact(int contactId){
+      //  contacts.removeIf(t -> t.getContactId().equals(contactId));
+          contactRepository.deleteById(contactId);
     }
 }
