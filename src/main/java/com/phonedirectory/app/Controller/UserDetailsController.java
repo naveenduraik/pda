@@ -34,9 +34,6 @@ public class UserDetailsController {
                  userdetailsService.addUser(userDetails);
         }
     
-        //put or patch can be used to update the record -- but patch is best suited to update a particular field
-        //in a selected record -- if we are updating the whole record then put can be used 
-        //patch responds back at a lesser time line (similar to replacing a bail in cricket kit rather than replacing the whole kit bag)
         @RequestMapping(method = RequestMethod.PATCH,value="/users/{userId}")
         public void updateUser(@RequestBody UserDetails userDetails, @PathVariable int userId){
             userdetailsService.updateUserDetails(userDetails,userId );

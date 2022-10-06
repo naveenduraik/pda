@@ -17,8 +17,7 @@ public class UserDetailsService {
     private UserDetailsRepository userDetailsRepository;
     public List<UserDetails> getAllUserDetails(){
         List<UserDetails> users= new ArrayList<UserDetails>();
-        userDetailsRepository.findAll().forEach(users:: add);
-        
+        userDetailsRepository.findAll().forEach(users:: add);        
         return users;
     }
 
@@ -28,22 +27,13 @@ public class UserDetailsService {
 
     public void addUser(UserDetails userdetails){
             userDetailsRepository.save(userdetails);
-           // contacts.add(contact);
     }
 
-    public void updateUserDetails(UserDetails userDetails ,int userId){
-        /* for(int index = 0;index<contacts.size();index++){
-            Contact c = contacts.get(index);
-            if(c.getContactId().equals(contactId)){
-                contacts.set(index, contact);
-                return;
-            }
-        } */
+    public void updateUserDetails(UserDetails userDetails ,int userId){ 
         userDetailsRepository.save(userDetails);
     }
 
     public void deleteUserDetails(int userId){
-      //  contacts.removeIf(t -> t.getContactId().equals(contactId));
           userDetailsRepository.deleteById(userId);
     }
 }
