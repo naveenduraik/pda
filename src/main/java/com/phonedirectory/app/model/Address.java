@@ -1,7 +1,17 @@
 package com.phonedirectory.app.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Address {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "addressId", updatable = false, nullable = false)
     private int addressId;
 	private String t_doorNo;
 	private String t_streetName;
@@ -20,7 +30,7 @@ public class Address {
 	private int userId;
 
     public Address(){
-        
+
     }
 
     
