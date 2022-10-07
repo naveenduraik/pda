@@ -15,7 +15,6 @@ import com.phonedirectory.app.service.AddressService;
 
 @RestController
 public class AddressController {
-
     @Autowired
     private AddressService addressService;
 
