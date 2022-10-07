@@ -22,8 +22,8 @@ public class UserDetails {
 	private String departmentId;
 	private String designation;
 
-    public UserDetails(){
-
+    public UserDetails(int userId){
+            this.userId = userId;
     }
 
     public UserDetails(int userId, String firstName, String lastName, String primaryEmailId, String secondaryEmailId,

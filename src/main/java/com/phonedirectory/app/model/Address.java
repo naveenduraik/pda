@@ -1,17 +1,12 @@
 package com.phonedirectory.app.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "addressId", updatable = false, nullable = false)
     private int addressId;
 	private String t_doorNo;
 	private String t_streetName;
@@ -19,15 +14,13 @@ public class Address {
 	private String t_pinCode;
 	private String t_state;
 	private String t_country;
-	
-
 	private String p_doorNo;
 	private String p_streetName;
 	private String p_city;
 	private String p_pinCode;
 	private String p_state;
 	private String p_country;
-	private int userId;
+    private int userId;
 
     public Address(){
 
@@ -36,7 +29,7 @@ public class Address {
     
     public Address(int addressId, String t_doorNo, String t_streetName, String t_city, String t_pinCode, String t_state,
             String t_country, String p_doorNo, String p_streetName, String p_city, String p_pinCode, String p_state,
-            String p_country, int userId) {
+            String p_country ,int userId) {
         this.addressId = addressId;
         this.t_doorNo = t_doorNo;
         this.t_streetName = t_streetName;
@@ -91,9 +84,9 @@ public class Address {
     public String getP_country() {
         return p_country;
     }
-    public int getUserId() {
+     public int getUserId() {
         return userId;
-    }
+    } 
 
     
     
