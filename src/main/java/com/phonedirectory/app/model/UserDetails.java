@@ -9,10 +9,7 @@ import jakarta.persistence.Id;
 @Entity
 public class UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId", updatable = false, nullable = false)
     private int userId;
-    @Column(name = "firstName", updatable = false, nullable = false)
 	private String firstName;
 	private String lastName;
 	private String primaryEmailId;
@@ -22,8 +19,8 @@ public class UserDetails {
 	private String departmentId;
 	private String designation;
 
-    public UserDetails(int userId){
-            this.userId = userId;
+    public UserDetails(){
+        
     }
 
     public UserDetails(int userId, String firstName, String lastName, String primaryEmailId, String secondaryEmailId,
