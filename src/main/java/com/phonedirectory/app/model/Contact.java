@@ -1,9 +1,14 @@
 package com.phonedirectory.app.model;
 
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;//javax persistence is renamed as jakarata.persistence
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity 
 public class Contact {
@@ -14,7 +19,11 @@ public class Contact {
     private String secondaryMobileNumber;
     private int userId;
 
-     
+
+   
+
+
+
    public Contact(){
 
     }
