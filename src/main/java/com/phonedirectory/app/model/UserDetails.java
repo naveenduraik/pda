@@ -2,6 +2,7 @@ package com.phonedirectory.app.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class UserDetails {
@@ -16,13 +17,12 @@ public class UserDetails {
 	private String departmentId;
 	private String designation;
 
+    
     public UserDetails(){
         
     }
 
-    public UserDetails(int userId){
-        this.userId = userId;
-    }
+   
 
     public UserDetails(int userId, String firstName, String lastName, String primaryEmailId, String secondaryEmailId,
             String passKey, String confirmPasskey, String departmentId, String designation) {
@@ -64,9 +64,5 @@ public class UserDetails {
     }
     public String getDesignation() {
         return designation;
-    }
-
-
-    
-
+   } 
 }
