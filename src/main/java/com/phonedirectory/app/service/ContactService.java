@@ -22,6 +22,7 @@ public class ContactService {
         new Contact(2, "91","9842307770", "8072600679", 1) 
     ));
     
+   
     
     public List<Contact> getAllContacts(){
         List<Contact> contacts = new ArrayList<Contact>();

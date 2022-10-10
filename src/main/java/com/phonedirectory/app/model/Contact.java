@@ -13,20 +13,22 @@ public class Contact {
     private String primaryMobileNumber;
     private String secondaryMobileNumber;
     private int userId;
-   
-   
 
+     
+   
+ 
     public Contact(){
 
     }
+
     
-    public Contact(int contactId, String countryCode,String primaryMobileNumber, String secondaryMobileNumber, int userId) {
+     public Contact(int contactId, String countryCode,String primaryMobileNumber, String secondaryMobileNumber, int userId) {
         this.contactId = contactId;
         this.countryCode = countryCode;
         this.primaryMobileNumber = primaryMobileNumber;
         this.secondaryMobileNumber = secondaryMobileNumber;
         this.userId = userId;
-    }
+    } 
     public int getContactId() {
         return contactId;
     }
@@ -41,8 +43,5 @@ public class Contact {
     }
     public int getUserId() {
         return userId;
-    }
-
-    
-    
+   }   
 }

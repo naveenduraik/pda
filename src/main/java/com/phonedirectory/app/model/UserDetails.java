@@ -20,6 +20,10 @@ public class UserDetails {
         
     }
 
+    public UserDetails(int userId){
+        this.userId = userId;
+    }
+
     public UserDetails(int userId, String firstName, String lastName, String primaryEmailId, String secondaryEmailId,
             String passKey, String confirmPasskey, String departmentId, String designation) {
         this.userId = userId;

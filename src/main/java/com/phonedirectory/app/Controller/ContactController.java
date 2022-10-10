@@ -1,5 +1,6 @@
 package com.phonedirectory.app.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,10 +18,12 @@ public class ContactController {
     @Autowired
     private ContactService contactService;
 
+
     @RequestMapping(method = RequestMethod.GET,value ="/contacts")
     public List<Contact> getAllContacts(){
         return contactService.getAllContacts();
     }
+   
     
     @RequestMapping(method = RequestMethod.GET,value ="/contacts/{contactId}")
     public Optional<Contact> getContact(@PathVariable int contactId){
@@ -31,6 +34,8 @@ public class ContactController {
     public void addContact(@RequestBody Contact contact){
              contactService.addContact(contact);
     }
+
+  
 
     //put or patch can be used to update the record -- but patch is best suited to update a particular field
     //in a selected record -- if we are updating the whole record then put can be used 
