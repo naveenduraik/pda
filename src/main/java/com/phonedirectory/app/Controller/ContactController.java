@@ -1,6 +1,5 @@
 package com.phonedirectory.app.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,18 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phonedirectory.app.model.Contact;
+import com.phonedirectory.app.model.UserDetails;
 import com.phonedirectory.app.service.ContactService;
 @RestController
 public class ContactController {
     @Autowired
     private ContactService contactService;
 
-
     @RequestMapping(method = RequestMethod.GET,value ="/contacts")
     public List<Contact> getAllContacts(){
         return contactService.getAllContacts();
     }
-   
     
     @RequestMapping(method = RequestMethod.GET,value ="/contacts/{contactId}")
     public Optional<Contact> getContact(@PathVariable int contactId){
@@ -34,8 +32,6 @@ public class ContactController {
     public void addContact(@RequestBody Contact contact){
              contactService.addContact(contact);
     }
-
-  
 
     //put or patch can be used to update the record -- but patch is best suited to update a particular field
     //in a selected record -- if we are updating the whole record then put can be used 
@@ -49,4 +45,19 @@ public class ContactController {
     public void deleteContact(@PathVariable int contactId){
         contactService.deleteContact(contactId);
     }
+    
+    @RequestMapping(method = RequestMethod.GET,value ="/contacts/phoneNo/{userId}")
+    public String userDetailsPhone(@PathVariable int userId){
+        return contactService.userDetailsPhone(userId);
+    }
+    
+    @RequestMapping(method = RequestMethod.GET,value ="/contacts/usernamephoneNo/{username}")
+    public String usernameDetailsPhone(@PathVariable String username){
+        return contactService.usernameDetailsPhone(username);
+    }
+
+    
+    
+    
+    
 }

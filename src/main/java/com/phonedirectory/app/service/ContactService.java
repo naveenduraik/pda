@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.phonedirectory.app.model.Contact;
+import com.phonedirectory.app.model.UserDetails;
 import com.phonedirectory.app.repository.ContactRepository;
 
 @Service
@@ -22,7 +23,6 @@ public class ContactService {
         new Contact(2, "91","9842307770", "8072600679", 1) 
     ));
     
-   
     
     public List<Contact> getAllContacts(){
         List<Contact> contacts = new ArrayList<Contact>();
@@ -55,4 +55,18 @@ public class ContactService {
       //  contacts.removeIf(t -> t.getContactId().equals(contactId));
           contactRepository.deleteById(contactId);
     }
+
+	
+    public String userDetailsPhone(int userId) {
+		// TODO Auto-generated method stub
+		return  contactRepository.userDetailsPhone(userId);
+		
+	}
+    
+    public String usernameDetailsPhone(String username) {
+		// TODO Auto-generated method stub
+		return  contactRepository.usernameDetailsPhone(username);
+		
+	}
+	
 }

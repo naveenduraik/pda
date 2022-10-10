@@ -43,6 +43,8 @@ public class UserDetailsController {
         public void deleteUserDetails(@PathVariable int userId){
             userdetailsService.deleteUserDetails(userId);
         }
+        
+        
 
 
 }

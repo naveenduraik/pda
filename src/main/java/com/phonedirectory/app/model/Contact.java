@@ -1,16 +1,11 @@
 package com.phonedirectory.app.model;
 
-
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import jakarta.persistence.Entity;//javax persistence is renamed as jakarata.persistence
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity 
+@Table(name="contact")
 public class Contact {
     @Id
     private int contactId;
@@ -19,25 +14,14 @@ public class Contact {
     private String secondaryMobileNumber;
     private int userId;
 
-
-   
-
-
-
-   public Contact(){
-
-    }
-    public Contact (int contactId){
-        this.contactId = contactId;
-    }
     
-     public Contact(int contactId, String countryCode,String primaryMobileNumber, String secondaryMobileNumber, int userId) {
+    public Contact(int contactId, String countryCode,String primaryMobileNumber, String secondaryMobileNumber, int userId) {
         this.contactId = contactId;
         this.countryCode = countryCode;
         this.primaryMobileNumber = primaryMobileNumber;
         this.secondaryMobileNumber = secondaryMobileNumber;
         this.userId = userId;
-    } 
+    }
     public int getContactId() {
         return contactId;
     }
@@ -52,5 +36,8 @@ public class Contact {
     }
     public int getUserId() {
         return userId;
-   }   
+    }
+
+    
+    
 }

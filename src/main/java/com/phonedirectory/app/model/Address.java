@@ -1,7 +1,7 @@
 package com.phonedirectory.app.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Address {
@@ -22,9 +22,7 @@ public class Address {
 	private String p_country;
     private int userId;
 
-    public Address(){
-
-    }
+    
 
     
     public Address(int addressId, String t_doorNo, String t_streetName, String t_city, String t_pinCode, String t_state,
