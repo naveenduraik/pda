@@ -14,6 +14,9 @@ public class Contact {
     private String secondaryMobileNumber;
     private int userId;
 
+    public Contact(){
+        
+    }
     
     public Contact(int contactId, String countryCode,String primaryMobileNumber, String secondaryMobileNumber, int userId) {
         this.contactId = contactId;
