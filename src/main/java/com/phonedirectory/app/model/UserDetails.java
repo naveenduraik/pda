@@ -14,22 +14,31 @@ public class UserDetails {
     @Column(name="user_id")
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int userId;
+
     @Column(name="first_name")
 	private String firstName;
+
     @Column(name="last_name")
 	private String lastName;
+
     @Column(name="primary_email_id")
 	private String primaryEmailId;
+
     @Column(name="secondary_email_id")
 	private String secondaryEmailId;
+
     @Column(name="pass_key")
 	private String passKey;
+
     @Column(name="confirm_passkey")
 	private String confirmPasskey;
+
     @Column(name="department_id")
 	private String departmentId;
+
     @Column(name="designation")
 	private String designation;
+    
     @Column(name="username")
     private String username;
     

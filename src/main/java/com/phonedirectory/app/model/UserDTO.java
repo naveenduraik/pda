@@ -1,7 +1,6 @@
 package com.phonedirectory.app.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+
 
 public class UserDTO {
 	private String username;
