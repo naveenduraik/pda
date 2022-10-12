@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint, Serializable {
 
 	
-
+// responses regarding Unathourized access
 	
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,

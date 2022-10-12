@@ -18,7 +18,7 @@ import com.phonedirectory.app.model.UserDetails;
 import com.phonedirectory.app.service.JWTUserDetailsService;
 
 import io.jsonwebtoken.ExpiredJwtException;
-
+//generating bearer token removing bearer prefix and validates/authenticates
 @Component
 public class JWTRequestFilter extends OncePerRequestFilter {
 
