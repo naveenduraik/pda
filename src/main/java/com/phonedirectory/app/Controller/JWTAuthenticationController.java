@@ -8,7 +8,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,17 +48,20 @@ public class JWTAuthenticationController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
 		return ResponseEntity.ok(userDetailsService.save(user));
 	}
 
-	private void authenticate(String username, String password) throws Exception {
+	private void authenticate(String username, String password)  {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException e) {
-			throw new Exception("USER_DISABLED", e);
+			//throw new Exception("USER_DISABLED", e);
+			System.out.println("UserDisabled"+e);
 		} catch (BadCredentialsException e) {
-			throw new Exception("INVALID_CREDENTIALS", e);
+			//throw new Exception("INVALID_CREDENTIALS", e);
+			System.out.println("Invalid Credentials"+e);
 		}
 	}
+	
 }
