@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phonedirectory.app.model.Contact;
-import com.phonedirectory.app.model.UserDetails;
 import com.phonedirectory.app.service.ContactService;
 @RestController
 public class ContactController {
