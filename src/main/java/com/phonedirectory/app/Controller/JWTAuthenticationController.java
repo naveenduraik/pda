@@ -23,6 +23,7 @@ import com.phonedirectory.app.service.JWTUserDetailsService;
 
 @RestController
 @CrossOrigin
+@RequestMapping("")
 public class JWTAuthenticationController {
 
 	@Autowired

@@ -15,6 +15,7 @@ import com.phonedirectory.app.model.UserDetails;
 import com.phonedirectory.app.service.ContactService;
 @RestController
 public class ContactController {
+    
     @Autowired
     private ContactService contactService;
 
