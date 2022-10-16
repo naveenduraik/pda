@@ -14,6 +14,26 @@ public class Department {
 
     }
 
+    
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
+
+
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+
+
     public Department(String departmentId, String departmentName, String details) {
         this.departmentId = departmentId;
         this.departmentName = departmentName;

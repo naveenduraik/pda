@@ -6,6 +6,7 @@ public class JWTResponse implements Serializable {
 
 	private final String jwttoken;
 
+
 	public JWTResponse(String jwttoken) {
 		this.jwttoken = jwttoken;
 	}

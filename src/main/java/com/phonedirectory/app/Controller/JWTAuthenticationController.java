@@ -1,6 +1,7 @@
 package com.phonedirectory.app.Controller;
 
 
+import org.mockito.internal.matchers.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -49,7 +50,15 @@ public class JWTAuthenticationController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
-		return ResponseEntity.ok(userDetailsService.save(user));
+		
+		try{
+			return ResponseEntity.ok(userDetailsService.save(user));
+
+		}
+		catch(NullPointerException ne){
+			System.out.println(ne);
+		}
+		return null;
 	}
 
 	private void authenticate(String username, String password)  {
