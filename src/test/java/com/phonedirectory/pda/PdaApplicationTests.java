@@ -29,7 +29,6 @@ class PdaApplicationTests {
 	@Autowired
 	private  MockMvc mockMvc ;
 
-
 	@Test
 	public void userRegister() throws Exception {		 
 		 		//Sign Up
@@ -102,23 +101,8 @@ class PdaApplicationTests {
 		 	        	.andReturn();
 	}
 
-
-	/* private int addressId;
-	private String t_doorNo;
-	private String t_streetName;
-	private String t_city;
-	private String t_pinCode;
-	private String t_state;
-	private String t_country;
-	private String p_doorNo;
-	private String p_streetName;
-	private String p_city;
-	private String p_pinCode;
-	private String p_state;
-	private String p_country;
-    private int userId; */
 	 @Test
-	 public void addressEntry() throws Exception{
+	 public void setAddress() throws Exception{
 
 		String data = "{\"t_doorNo\":\"d02\",\"t_streetName\":\"Stark1\",\"t_city\":\"development\",\"t_pinCode\":\"development\",\"t_state\":\"development\",\"t_country\":\"development\",\"p_doorNo;\":\"development\",\"p_streetName;\":\"development\",\"p_city\":\"development\",\"p_pinCode\":\"development\",\"p_state\":\"development\",\"p_country\":\"development\",\"userId\":\"1\" }";
 
@@ -129,11 +113,18 @@ class PdaApplicationTests {
 						.andExpect(status().isOk())
 		 	        	//.andExpect(jsonPath("$").value("true"))
 		 	        	.andReturn();
+} 
+
+	 @Test
+	 public void getAddress() throws Exception{		
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/address")
+						.accept(MediaType.APPLICATION_JSON))
+						.andExpect(status().isOk())
+						.andDo(print())
+						.andExpect(MockMvcResultMatchers.jsonPath("$[*].t_country").exists())
+						.andReturn();
 
 	 } 
-
-	
-  
-
 	
 }
