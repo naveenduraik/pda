@@ -10,11 +10,14 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.phonedirectory.app.PdaApplication;
 
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
 
 
 
@@ -63,7 +66,7 @@ class PdaApplicationTests {
 	}    */
 
 	@Test
-	public void contactEntry() throws Exception{
+	public void setContact() throws Exception{
 		String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
 		mockMvc.perform(MockMvcRequestBuilders.post("/contacts")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
@@ -72,6 +75,26 @@ class PdaApplicationTests {
 						.andExpect(status().isOk())
 		 	        	//.andExpect(jsonPath("$").value("true"))
 		 	        	.andReturn();
+
+						/*  mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
+						.accept(MediaType.APPLICATION_JSON))
+						.andExpect(status().isOk())
+						.andDo(print())
+						.andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").exists())
+						.andReturn(); */
+						
+	}
+
+	@Test
+	public void getContact() throws Exception{
+		//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
+		 mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
+						.accept(MediaType.APPLICATION_JSON))
+						.andExpect(status().isOk())
+						.andDo(print())
+						.andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").exists())
+						.andReturn();
+						
 	}
 
 	
@@ -105,7 +128,7 @@ class PdaApplicationTests {
 	 @Test
 	 public void addressEntry() throws Exception{
 
-		String data = "{\"t_doorNo\":\"d02\",\"t_streetName\":\"Stark1\",\"t_city\":\"development\",\"t_pinCode\":\"development\",\"t_state\":\"development\",\"t_country\":\"development\",\"p_doorNo;\":\"development\",\"p_streetName;\":\"development\",\"p_city\":\"development\",\"p_pinCode\":\"development\",\"p_state\":\"development\",\"p_country\":\"development\",\"user_id\":\"1\" }";
+		String data = "{\"t_doorNo\":\"d02\",\"t_streetName\":\"Stark1\",\"t_city\":\"development\",\"t_pinCode\":\"development\",\"t_state\":\"development\",\"t_country\":\"development\",\"p_doorNo;\":\"development\",\"p_streetName;\":\"development\",\"p_city\":\"development\",\"p_pinCode\":\"development\",\"p_state\":\"development\",\"p_country\":\"development\",\"userId\":\"1\" }";
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/address")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
