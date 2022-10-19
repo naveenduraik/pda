@@ -21,6 +21,7 @@ import com.phonedirectory.app.service.AddressService;
 public class AddressController {
     @Autowired
     private AddressService addressService;
+
     @GetMapping("/address")
     public List<Address> getAllAddressDetails(){
         return addressService.getAllAddress();
@@ -31,7 +32,7 @@ public class AddressController {
         return addressService.getAddress(addressId);
     }
 
-    @PostMapping("/adress")
+    @PostMapping("/address")
     public void addAddress(@RequestBody Address address){
         addressService.addAddress(address);
     }
