@@ -23,7 +23,7 @@ public class AddressController {
         return addressService.getAllAddress();
     }
 
-    @RequestMapping(method = RequestMethod.GET ,value = "/addr/{addressId}")
+    @RequestMapping(method = RequestMethod.GET ,value = "/address/{addressId}")
     public Optional<Address> getAddress(@PathVariable int addressId){
         return addressService.getAddress(addressId);
     }
