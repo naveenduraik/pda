@@ -74,15 +74,7 @@ class PdaApplicationTests {
 		 	 			.accept(MediaType.APPLICATION_JSON))
 						.andExpect(status().isOk())
 		 	        	//.andExpect(jsonPath("$").value("true"))
-		 	        	.andReturn();
-
-						/*  mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
-						.accept(MediaType.APPLICATION_JSON))
-						.andExpect(status().isOk())
-						.andDo(print())
-						.andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").exists())
-						.andReturn(); */
-						
+		 	        	.andReturn();						
 	}
 
 	@Test
