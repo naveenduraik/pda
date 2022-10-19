@@ -7,8 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.http.HttpHeaders;
+
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -18,7 +17,6 @@ import com.phonedirectory.app.PdaApplication;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @RunWith(SpringJUnit4ClassRunner.class) 
 @SpringBootTest(classes = PdaApplication.class)
@@ -89,10 +87,35 @@ class PdaApplicationTests {
 		 	        	.andReturn();
 	}
 
-	/* @Test
+
+	/* private int addressId;
+	private String t_doorNo;
+	private String t_streetName;
+	private String t_city;
+	private String t_pinCode;
+	private String t_state;
+	private String t_country;
+	private String p_doorNo;
+	private String p_streetName;
+	private String p_city;
+	private String p_pinCode;
+	private String p_state;
+	private String p_country;
+    private int userId; */
+	 @Test
 	 public void addressEntry() throws Exception{
 
-	 } */
+		String data = "{\"t_doorNo\":\"d02\",\"t_streetName\":\"Stark1\",\"t_city\":\"development\",\"t_pinCode\":\"development\",\"t_state\":\"development\",\"t_country\":\"development\",\"p_doorNo;\":\"development\",\"p_streetName;\":\"development\",\"p_city\":\"development\",\"p_pinCode\":\"development\",\"p_state\":\"development\",\"p_country\":\"development\",\"user_id\":\"1\" }";
+
+		mockMvc.perform(MockMvcRequestBuilders.post("/address")
+		 	 			.contentType(MediaType.APPLICATION_JSON)
+		 	 			.content(data)
+		 	 			.accept(MediaType.APPLICATION_JSON))
+						.andExpect(status().isOk())
+		 	        	//.andExpect(jsonPath("$").value("true"))
+		 	        	.andReturn();
+
+	 } 
 
 	
   
