@@ -107,7 +107,7 @@ class PdaApplicationTests {
 
 		String data = "{\"t_doorNo\":\"d02\",\"t_streetName\":\"Stark1\",\"t_city\":\"development\",\"t_pinCode\":\"development\",\"t_state\":\"development\",\"t_country\":\"development\",\"p_doorNo;\":\"development\",\"p_streetName;\":\"development\",\"p_city\":\"development\",\"p_pinCode\":\"development\",\"p_state\":\"development\",\"p_country\":\"development\",\"user_id\":\"1\" }";
 
-		mockMvc.perform(MockMvcRequestBuilders.post("/address")
+		mockMvc.perform(MockMvcRequestBuilders.post("/addr")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
 		 	 			.content(data)
 		 	 			.accept(MediaType.APPLICATION_JSON))
