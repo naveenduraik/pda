@@ -18,7 +18,7 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
-    @RequestMapping(method = RequestMethod.GET ,value = "/addr")
+    @RequestMapping(method = RequestMethod.GET ,value = "/address")
     public List<Address> getAllAddressDetails(){
         return addressService.getAllAddress();
     }
@@ -28,17 +28,17 @@ public class AddressController {
         return addressService.getAddress(addressId);
     }
 
-    @RequestMapping(method = RequestMethod.POST ,value = "/addr")
+    @RequestMapping(method = RequestMethod.POST ,value = "/address")
     public void addAddress(@RequestBody Address address){
         addressService.addAddress(address);
     }
     
-    @RequestMapping(method = RequestMethod.PATCH,value="/addr/{addressId}")
+    @RequestMapping(method = RequestMethod.PATCH,value="/address/{addressId}")
     public void updateAddress(@RequestBody Address address ,@PathVariable int addressId){
         addressService.updateAddress(address, addressId);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE,value ="/addr/{addressId}")
+    @RequestMapping(method = RequestMethod.DELETE,value ="/address/{addressId}")
     public void deleteAddress(@PathVariable int addressId){
         addressService.deleteAddress(addressId);
     }
