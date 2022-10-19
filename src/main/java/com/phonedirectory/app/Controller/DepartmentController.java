@@ -24,19 +24,16 @@ public class DepartmentController {
         private DepartmentService departmentService;
 
         @GetMapping("/departments")
-        //@RequestMapping(method = RequestMethod.GET,value ="/departments")
         public List<Department> getAllDepartments(){
             return departmentService.getAllDepartments();
         }
         
         @GetMapping("/departments/{departmentId")
-       // @RequestMapping(method = RequestMethod.GET,value ="/departments/{departmentId}")
         public Optional<Department> getDepartment(@PathVariable String departmentId){
             return departmentService .getDepartment(departmentId);
         }
     
         @PostMapping("/departments")
-       // @RequestMapping(method = RequestMethod.POST,value = "/departments")
         public void addContact(@RequestBody Department department){
                  departmentService.addDepartment(department);
         }
@@ -45,13 +42,11 @@ public class DepartmentController {
         //in a selected record -- if we are updating the whole record then put can be used 
         //patch responds back at a lesser time line (similar to replacing a bail in cricket kit rather than replacing the whole kit bag)
         @PatchMapping("/departments/{departmentId}")
-        //@RequestMapping(method = RequestMethod.PATCH,value="/departments/{departmentId}")
         public void updateContact(@RequestBody Department department, @PathVariable String departmentId){
             departmentService.updateDepartment(department,departmentId );
         }
     
         @DeleteMapping("/departments/{departmentId}")
-       // @RequestMapping(method = RequestMethod.DELETE,value ="/departments/{departmentId}")
         public void deleteContact(@PathVariable String departmentId){
             departmentService.deleteDepartment(departmentId);
         }      
