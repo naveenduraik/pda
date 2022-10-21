@@ -84,18 +84,18 @@ class PdaApplicationTests {
 			
 				}					
 	
-				@Test
-				public void getUserPhoneNumber() throws Exception{
-					//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
-					 mockMvc.perform(MockMvcRequestBuilders.get("/contacts/phoneNo/{userId}","10000")
-									.accept(MediaType.APPLICATION_JSON))
-									.andExpect(MockMvcResultMatchers.status().isOk())
-									.andDo(print())
-									//.andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").value("91"))
-									.andReturn();
+	@Test
+		public void getUserPhoneNumber() throws Exception{
+			//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
+			 mockMvc.perform(MockMvcRequestBuilders.get("/contacts/phoneNo/{userId}","10000")
+					.accept(MediaType.APPLICATION_JSON))
+					.andExpect(MockMvcResultMatchers.status().isOk())
+					.andDo(print())
+					//.andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").value("91"))
+					.andReturn();
 			
 						
-							}					
+	}					
 				
 	
 	@Test
