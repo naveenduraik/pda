@@ -62,7 +62,7 @@ public class JWTAuthenticationController {
 
 		}
 		catch(NullPointerException ne){
-			System.out.println(ne);
+			System.err.println(ne);
 		}
 		return null;
 	}
@@ -72,10 +72,10 @@ public class JWTAuthenticationController {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException e) {
 			//throw new Exception("USER_DISABLED", e);
-			System.out.println("UserDisabled"+e);
+			System.err.println("UserDisabled"+e);
 		} catch (BadCredentialsException  e) {
 			//throw new Exception("INVALID_CREDENTIALS", e);
-			System.out.println("Invalid Credentials"+e);
+			System.err.println("Invalid Credentials"+e);
 		}
 	}
 	
