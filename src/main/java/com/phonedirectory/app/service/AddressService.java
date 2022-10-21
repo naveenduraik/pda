@@ -14,6 +14,7 @@ import com.phonedirectory.app.repository.AddressRepository;
 @Service
 
 public class AddressService {
+    Address address;
     @Autowired
     AddressRepository addressRepository;
 
@@ -32,6 +33,7 @@ public class AddressService {
     }
     
     public void addAddress(Address address){
+
         addressRepository.save(address);
     }
 

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.phonedirectory.app.model.UserDTO;
 import com.phonedirectory.app.repository.UserDetailsRepository;
+
 @Service
 public class JWTUserDetailsService implements UserDetailsService {
 	
