@@ -32,10 +32,11 @@ class PdaApplicationTests {
 	@Autowired
 	private  MockMvc mockMvc ;
 
+	// Register a new user.
 	@Test
 	public void userRegister() throws Exception {		 
 		 		//Sign Up
-		 	 	String userdata = "{\"userId\":\"1\",\"firstName\":\"naveen\",\"lastName\":\"durai\",\"primaryEmailId\":\"naveendurai@iamneo.ai\",\"secondaryEmailId\":\"naveendurai.k@gmail.com\" ,\"passKey\":\"test@123\",\"confirmPasskey\":\"test@123\",\"departmentId\":\"D2\",\"designation\":\"SDE\",\"username\":\"durai101\",\"password\":\"test@123\"}";
+		 	 	String userdata = "{\"userId\":\"1\",\"firstName\":\"naveen\",\"lastName\":\"durai\",\"primaryEmailId\":\"naveendurai@iamneo.ai\",\"secondaryEmailId\":\"naveendurai.k@gmail.com\" ,\"passKey\":\"test@123\",\"confirmPasskey\":\"test@123\",\"departmentId\":\"D2\",\"designation\":\"SDE\",\"username\":\"durai\",\"password\":\"test@123\"}";
 
 			 	mockMvc.perform(MockMvcRequestBuilders.post("/register")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
@@ -44,11 +45,13 @@ class PdaApplicationTests {
 		 	        	.andExpect(status().isOk())
 		 	        	//.andExpect(jsonPath("$").value("true"))
 		 	        	.andReturn();
+							// Authenticate a user.
 	}
+	// Authenticate a user.
 	   @Test
 	public void authenticationCheck() throws Exception {			
 	//login
-		String dataOne = "{\"username\":\"durai101\",\"password\":\"test@123\"}";	
+		String dataOne = "{\"username\":\"durai\",\"password\":\"test@123\"}";	
 			   mockMvc.perform(MockMvcRequestBuilders.post("/authenticate")
 		        .contentType(MediaType.APPLICATION_JSON)
 				.content(dataOne)
@@ -59,6 +62,7 @@ class PdaApplicationTests {
 				.andReturn();  		
 	}    
 
+	// Set a contact.
 	@Test
 	public void setContact() throws Exception{
 		String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
@@ -71,6 +75,7 @@ class PdaApplicationTests {
 		 	        	.andReturn();						
 	}
 
+	// Get a single contact.
 	@Test
 	public void getContact() throws Exception{
 		//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
@@ -82,8 +87,9 @@ class PdaApplicationTests {
 						.andReturn();
 
 			
-				}					
+	}					
 	
+	// Get the phone number of a user.
 	@Test
 		public void getUserPhoneNumber() throws Exception{
 			//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
@@ -98,6 +104,7 @@ class PdaApplicationTests {
 	}					
 				
 	
+	// Create a new department.
 	@Test
 	public void departmentEntry() throws Exception{
 		String data = "{\"departmentId\":\"d02\",\"departmentName\":\"Stark1\",\"details\":\"development\"}";	
@@ -110,6 +117,7 @@ class PdaApplicationTests {
 		 	        	.andReturn();
 	}
 
+	// Sets the address of the test.
 	 @Test
 	 public void setAddress() throws Exception{
 

@@ -28,6 +28,7 @@ import com.phonedirectory.app.service.JWTUserDetailsService;
 @RestController
 @CrossOrigin(origins = "http://localhost:8080/", allowedHeaders = "*")
 
+// Authenticates the user with the given username and password.
 public class JWTAuthenticationController {
 
 	@Autowired
@@ -40,7 +41,7 @@ public class JWTAuthenticationController {
 	private JWTUserDetailsService userDetailsService;
 
 	@PostMapping("/authenticate")
-	//@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+	// Create a new authentication token.
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JWTRequest authenticationRequest) throws Exception {
 
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
@@ -53,8 +54,8 @@ public class JWTAuthenticationController {
 		return ResponseEntity.ok(new JWTResponse(token));
 	}
 	
+	// Authenticates and saves a user.
 	@PostMapping("/register")
-	//@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
 		
 		try{
@@ -67,14 +68,13 @@ public class JWTAuthenticationController {
 		return null;
 	}
 
+	// Authenticate using the given username and password.
 	private void authenticate(String username, String password) {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException e) {
-			//throw new Exception("USER_DISABLED", e);
 			System.err.println("UserDisabled"+e);
 		} catch (BadCredentialsException  e) {
-			//throw new Exception("INVALID_CREDENTIALS", e);
 			System.err.println("Invalid Credentials"+e);
 		}
 	}
