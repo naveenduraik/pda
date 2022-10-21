@@ -17,7 +17,6 @@ import com.phonedirectory.app.PdaApplication;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.hamcrest.Matchers;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
@@ -82,7 +81,7 @@ class PdaApplicationTests {
 	@Test
 	public void getContact() throws Exception{
 		//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
-		 mockMvc.perform(MockMvcRequestBuilders.get("/contacts/{contactId}","1")
+		 mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
 						.accept(MediaType.APPLICATION_JSON))
 						.andExpect(MockMvcResultMatchers.status().isOk())
 						.andDo(print())
@@ -92,7 +91,19 @@ class PdaApplicationTests {
 			
 				}					
 	
-		
+				@Test
+				public void getUserPhoneNumber() throws Exception{
+					//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
+					 mockMvc.perform(MockMvcRequestBuilders.get("/contacts/phoneNo/{userId}","10000")
+									.accept(MediaType.APPLICATION_JSON))
+									.andExpect(MockMvcResultMatchers.status().isOk())
+									.andDo(print())
+									//.andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").value("91"))
+									.andReturn();
+			
+						
+							}					
+				
 	
 	@Test
 	public void departmentEntry() throws Exception{
