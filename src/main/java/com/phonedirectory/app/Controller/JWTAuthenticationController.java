@@ -26,7 +26,7 @@ import com.phonedirectory.app.service.JWTUserDetailsService;
 
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:8080/", allowedHeaders = "*")
 
 public class JWTAuthenticationController {
 
