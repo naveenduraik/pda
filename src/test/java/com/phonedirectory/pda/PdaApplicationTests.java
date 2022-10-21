@@ -16,6 +16,9 @@ import com.phonedirectory.app.PdaApplication;
 
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import org.hamcrest.Matchers;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 
@@ -79,15 +82,17 @@ class PdaApplicationTests {
 	@Test
 	public void getContact() throws Exception{
 		//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
-		 mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
+		 mockMvc.perform(MockMvcRequestBuilders.get("/contacts/{contactId}","1")
 						.accept(MediaType.APPLICATION_JSON))
-						.andExpect(status().isOk())
+						.andExpect(MockMvcResultMatchers.status().isOk())
 						.andDo(print())
-						.andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").exists())
+						//.andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").value("91"))
 						.andReturn();
-						
-	}
 
+			
+				}					
+	
+		
 	
 	@Test
 	public void departmentEntry() throws Exception{
