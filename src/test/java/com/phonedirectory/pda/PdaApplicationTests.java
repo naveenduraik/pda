@@ -7,7 +7,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -34,7 +35,7 @@ class PdaApplicationTests {
 	@Test
 	public void userRegister() throws Exception {		 
 		 		//Sign Up
-		 	 	String userdata = "{\"userId\":\"1\",\"firstName\":\"naveen\",\"lastName\":\"durai\",\"primaryEmailId\":\"naveendurai@iamneo.ai\",\"secondaryEmailId\":\"naveendurai.k@gmail.com\" ,\"passKey\":\"test@123\",\"confirmPasskey\":\"test@123\",\"departmentId\":\"D2\",\"designation\":\"SDE\",\"username\":\"naveendurai\",\"password\":\"test@123\"}";
+		 	 	String userdata = "{\"userId\":\"1\",\"firstName\":\"naveen\",\"lastName\":\"durai\",\"primaryEmailId\":\"naveendurai@iamneo.ai\",\"secondaryEmailId\":\"naveendurai.k@gmail.com\" ,\"passKey\":\"test@123\",\"confirmPasskey\":\"test@123\",\"departmentId\":\"D2\",\"designation\":\"SDE\",\"username\":\"durai100\",\"password\":\"test@123\"}";
 
 			 	mockMvc.perform(MockMvcRequestBuilders.post("/register")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
@@ -44,27 +45,19 @@ class PdaApplicationTests {
 		 	        	//.andExpect(jsonPath("$").value("true"))
 		 	        	.andReturn();
 	}
-	/*   @Test
-	public void TestCase2() throws Exception {			
+	   @Test
+	public void authenticationCheck() throws Exception {			
 	//login
-		String dataOne = "{\"username\":\"naveen\",\"password\":\"test@123\"}";	
-			MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/authenticate")
+		String dataOne = "{\"username\":\"durai100\",\"password\":\"test@123\"}";	
+			   mockMvc.perform(MockMvcRequestBuilders.post("/authenticate")
 		        .contentType(MediaType.APPLICATION_JSON)
 				.content(dataOne)
-				.accept(MediaType.APPLICATION_JSON))
-				//.header(HttpHeaders.AUTHORIZATION, "Bearer token"))
+				.accept(MediaType.APPLICATION_JSON)
+				.header(HttpHeaders.AUTHORIZATION))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$").value("true"))
+				//.andExpect(jsonPath("$").value("true"))
 				.andReturn();  		
-
-				String response = result.getResponse().getContentAsString();
-				response = response.replace("{\"access_token\": \"", "");
-				String token = response.replace("\"}", "");
-
-				mockMvc.perform(MockMvcRequestBuilders.get("/authenticate")
-				.header("Authorization", "Bearer " + token))
-				.andExpect(status().isOk());
-	}    */
+	}    
 
 	@Test
 	public void setContact() throws Exception{
