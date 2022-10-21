@@ -1,4 +1,4 @@
-package com.phonedirectory.app.Controller;
+package com.phonedirectory.app.controllers;
 
 
 import java.nio.charset.MalformedInputException;
