@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.phonedirectory.app.model.Contact;
-import com.phonedirectory.app.model.UserDetails;
 import com.phonedirectory.app.repository.ContactRepository;
 
 @Service
@@ -25,10 +24,10 @@ public class ContactService {
     
     
     public List<Contact> getAllContacts(){
-        List<Contact> contacts = new ArrayList<Contact>();
-        contactRepository.findAll().forEach(contacts:: add);
+        List<Contact> contactList = new ArrayList<Contact>();
+        contactRepository.findAll().forEach(contactList:: add);
         
-        return contacts;
+        return contactList;
     }
 
     public Optional<Contact> getContact(int contactId){
@@ -37,34 +36,23 @@ public class ContactService {
 
     public void addContact(Contact contact){
             contactRepository.save(contact);
-           // contacts.add(contact);
     }
 
     public void updateContact(Contact contact ,int contactId){
-        /* for(int index = 0;index<contacts.size();index++){
-            Contact c = contacts.get(index);
-            if(c.getContactId().equals(contactId)){
-                contacts.set(index, contact);
-                return;
-            }
-        } */
-        contactRepository.save(contact);
+            contactRepository.save(contact);
     }
 
     public void deleteContact(int contactId){
-      //  contacts.removeIf(t -> t.getContactId().equals(contactId));
           contactRepository.deleteById(contactId);
     }
 
 	
     public String userDetailsPhone(int userId) {
-		// TODO Auto-generated method stub
 		return  contactRepository.userDetailsPhone(userId);
 		
 	}
     
     public String usernameDetailsPhone(String username) {
-		// TODO Auto-generated method stub
 		return  contactRepository.usernameDetailsPhone(username);
 		
 	}

@@ -36,7 +36,7 @@ class PdaApplicationTests {
 	@Test
 	public void userRegister() throws Exception {		 
 		 		//Sign Up
-		 	 	String userdata = "{\"userId\":\"1\",\"firstName\":\"naveen\",\"lastName\":\"durai\",\"primaryEmailId\":\"naveendurai@iamneo.ai\",\"secondaryEmailId\":\"naveendurai.k@gmail.com\" ,\"passKey\":\"test@123\",\"confirmPasskey\":\"test@123\",\"departmentId\":\"D2\",\"designation\":\"SDE\",\"username\":\"durai1111\",\"password\":\"test@123\"}";
+		 	 	String userdata = "{\"userId\":\"1\",\"firstName\":\"naveen\",\"lastName\":\"durai\",\"primaryEmailId\":\"naveendurai@iamneo.ai\",\"secondaryEmailId\":\"naveendurai.k@gmail.com\" ,\"passKey\":\"test@123\",\"confirmPasskey\":\"test@123\",\"departmentId\":\"D2\",\"designation\":\"SDE\",\"username\":\"durai121\",\"password\":\"test@123\"}";
 
 			 	mockMvc.perform(MockMvcRequestBuilders.post("/register")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
@@ -51,7 +51,7 @@ class PdaApplicationTests {
 	   @Test
 	public void authenticationCheck() throws Exception {			
 	//login
-		String dataOne = "{\"username\":\"durai1111\",\"password\":\"test@123\"}";	
+		String dataOne = "{\"username\":\"durai121\",\"password\":\"test@123\"}";	
 			   mockMvc.perform(MockMvcRequestBuilders.post("/authenticate")
 		        .contentType(MediaType.APPLICATION_JSON)
 				.content(dataOne)
