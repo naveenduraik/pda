@@ -1,6 +1,7 @@
 package com.phonedirectory.app.controllers;
 
 
+import org.apache.logging.log4j.Logger;
 import java.nio.charset.MalformedInputException;
 
 import org.mockito.internal.matchers.Null;
@@ -28,6 +29,8 @@ import com.phonedirectory.app.service.JWTUserDetailsService;
 
 // Authenticates the user with the given username and password.
 public class JWTAuthenticationController {
+
+	Logger logger;
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -72,7 +75,8 @@ public class JWTAuthenticationController {
 
 		}
 		catch(NullPointerException ne){
-			System.err.println(ne);
+			//System.err.println(ne);
+			logger.getClass();
 		}
 		return null;
 	}
@@ -87,9 +91,11 @@ public class JWTAuthenticationController {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException e) {
-			System.err.println("UserDisabled"+e);
+			//System.err.println("UserDisabled"+e);
+			logger.getClass();
 		} catch (BadCredentialsException  e) {
-			System.err.println("Invalid Credentials"+e);
+			//System.err.println("Invalid Credentials"+e);
+			logger.getClass();
 		}
 	}
 	
