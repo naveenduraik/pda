@@ -65,7 +65,6 @@ public class JWTAuthenticationController {
 	 * @param user
 	 * @return ResponseEntity<?>
 	 */
-	// Authenticates and saves a user.
 	@PostMapping("/register")
 	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
 		
