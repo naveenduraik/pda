@@ -48,45 +48,101 @@ public class Address {
         this.p_country = p_country;
         this.userId = userId;
     }
+    
+    /** 
+     * @return int
+     */
     public int getAddressId() {
         return addressId;
     }
+    
+    /** 
+     * @return String
+     */
     public String getT_doorNo() {
         return t_doorNo;
     }
+    
+    /** 
+     * @return String
+     */
     public String getT_streetName() {
         return t_streetName;
     }
+    
+    /** 
+     * @return String
+     */
     public String getT_city() {
         return t_city;
     }
+    
+    /** 
+     * @return String
+     */
     public String getT_pinCode() {
         return t_pinCode;
     }
+    
+    /** 
+     * @return String
+     */
     public String getT_state() {
         return t_state;
     }
+    
+    /** 
+     * @return String
+     */
     public String getT_country() {
         return t_country;
     }
+    
+    /** 
+     * @return String
+     */
     public String getP_doorNo() {
         return p_doorNo;
     }
+    
+    /** 
+     * @return String
+     */
     public String getP_streetName() {
         return p_streetName;
     }
+    
+    /** 
+     * @return String
+     */
     public String getP_city() {
         return p_city;
     }
+    
+    /** 
+     * @return String
+     */
     public String getP_pinCode() {
         return p_pinCode;
     }
+    
+    /** 
+     * @return String
+     */
     public String getP_state() {
         return p_state;
     }
+    
+    /** 
+     * @return String
+     */
     public String getP_country() {
         return p_country;
     }
+     
+     /** 
+      * @return int
+      */
      public int getUserId() {
         return userId;
     } 
