@@ -34,7 +34,7 @@ class PdaApplicationTests {
 
 	// Register a new user.
 	@Test
-	public void userRegister() throws Exception {		 
+	void userRegister() throws Exception {		 
 		 		//Sign Up
 		 	 	String userdata = "{\"userId\":\"1\",\"firstName\":\"naveen\",\"lastName\":\"durai\",\"primaryEmailId\":\"naveendurai@iamneo.ai\",\"secondaryEmailId\":\"naveendurai.k@gmail.com\" ,\"passKey\":\"test@123\",\"confirmPasskey\":\"test@123\",\"departmentId\":\"D2\",\"designation\":\"SDE\",\"username\":\"durai121\",\"password\":\"test@123\"}";
 
@@ -49,7 +49,7 @@ class PdaApplicationTests {
 	}
 	// Authenticate a user.
 	   @Test
-	public void authenticationCheck() throws Exception {			
+	void authenticationCheck() throws Exception {			
 	//login
 		String dataOne = "{\"username\":\"durai121\",\"password\":\"test@123\"}";	
 			   mockMvc.perform(MockMvcRequestBuilders.post("/authenticate")
@@ -64,7 +64,7 @@ class PdaApplicationTests {
 
 	// Set a contact.
 	@Test
-	public void setContact() throws Exception{
+	void setContact() throws Exception{
 		String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
 		mockMvc.perform(MockMvcRequestBuilders.post("/contacts")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
@@ -77,7 +77,7 @@ class PdaApplicationTests {
 
 	// Get a single contact.
 	@Test
-	public void getContact() throws Exception{
+	void getContact() throws Exception{
 		//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
 		 mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
 						.accept(MediaType.APPLICATION_JSON))
@@ -91,7 +91,7 @@ class PdaApplicationTests {
 	
 	// Get the phone number of a user.
 	@Test
-		public void getUserPhoneNumber() throws Exception{
+	void getUserPhoneNumber() throws Exception{
 			//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
 			 mockMvc.perform(MockMvcRequestBuilders.get("/contacts/phoneNo/{userId}","10000")
 					.accept(MediaType.APPLICATION_JSON))
@@ -106,7 +106,7 @@ class PdaApplicationTests {
 	
 	// Create a new department.
 	@Test
-	public void departmentEntry() throws Exception{
+	void departmentEntry() throws Exception{
 		String data = "{\"departmentId\":\"d02\",\"departmentName\":\"Stark1\",\"details\":\"development\"}";	
 		mockMvc.perform(MockMvcRequestBuilders.post("/departments")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
@@ -119,7 +119,7 @@ class PdaApplicationTests {
 
 	// Sets the address of the test.
 	 @Test
-	 public void setAddress() throws Exception{
+	 void setAddress() throws Exception{
 
 		String data = "{\"tDoorNo\":\"d02\",\"tStreetName\":\"Stark1\",\"tCity\":\"development\",\"tPinCode\":\"development\",\"tState\":\"development\",\"tCountry\":\"development\",\"pDoorNo;\":\"development\",\"pStreetName;\":\"development\",\"pCity\":\"development\",\"pPinCode\":\"development\",\"pState\":\"development\",\"pCountry\":\"development\",\"userId\":\"1\" }";
 
