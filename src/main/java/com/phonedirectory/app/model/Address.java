@@ -30,6 +30,7 @@ public class Address {
         
     }
     
+    // Constructs a new address.
     public Address(int addressId, String t_doorNo, String t_streetName, String t_city, String t_pinCode, String t_state,
             String t_country, String p_doorNo, String p_streetName, String p_city, String p_pinCode, String p_state,
             String p_country ,int userId) {
