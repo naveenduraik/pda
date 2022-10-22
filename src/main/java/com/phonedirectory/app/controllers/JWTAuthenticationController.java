@@ -2,9 +2,7 @@ package com.phonedirectory.app.controllers;
 
 
 import org.apache.logging.log4j.Logger;
-import java.nio.charset.MalformedInputException;
 
-import org.mockito.internal.matchers.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,6 +30,7 @@ public class JWTAuthenticationController {
 
 	Logger logger;
 
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
@@ -49,7 +48,7 @@ public class JWTAuthenticationController {
 	 */
 	@PostMapping("/authenticate")
 	// Create a new authentication token.
-	public ResponseEntity<?> createAuthenticationToken(@RequestBody JWTRequest authenticationRequest) throws Exception {
+	public ResponseEntity<JWTResponse> createAuthenticationToken(@RequestBody JWTRequest authenticationRequest) throws Exception {
 
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
@@ -75,8 +74,7 @@ public class JWTAuthenticationController {
 
 		}
 		catch(NullPointerException ne){
-			//System.err.println(ne);
-			logger.getClass();
+			logger.info(ne);
 		}
 		return null;
 	}
@@ -90,13 +88,9 @@ public class JWTAuthenticationController {
 	private void authenticate(String username, String password) {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-		} catch (DisabledException e) {
-			//System.err.println("UserDisabled"+e);
-			logger.getClass();
-		} catch (BadCredentialsException  e) {
-			//System.err.println("Invalid Credentials"+e);
-			logger.getClass();
-		}
+		} catch (DisabledException | BadCredentialsException e) {
+			logger.info(e);
+		} 
 	}
 	
 }

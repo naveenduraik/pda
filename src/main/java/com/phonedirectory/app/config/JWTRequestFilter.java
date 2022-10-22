@@ -7,7 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +14,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.phonedirectory.app.model.UserDetails;
 import com.phonedirectory.app.service.JWTUserDetailsService;
 
 import io.jsonwebtoken.ExpiredJwtException;
@@ -44,10 +42,9 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 			try {
 				username = jwtTokenUtil.getUsernameFromToken(jwtToken);
 			} catch (IllegalArgumentException e) {
-				//System.err.println("Unable to get JWT Token");
+				
 				logger.info(e);
 			} catch (ExpiredJwtException e) {
-				//System.err.println("JWT Token has expired");
 				logger.info(e);
 				
 			}
