@@ -37,7 +37,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		try {
 			auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			logger.log(null, e);
 		}
 	}
@@ -53,7 +52,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		try {
 			return super.authenticationManagerBean();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			logger.log(null, e);
 		}
 		return null;
@@ -69,7 +67,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 								.and()
 								.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					logger.log(null, e);
 				}
 
