@@ -20,6 +20,7 @@ import com.phonedirectory.app.model.JWTRequest;
 import com.phonedirectory.app.model.JWTResponse;
 import com.phonedirectory.app.model.UserDTO;
 import com.phonedirectory.app.service.JWTUserDetailsService;
+import com.phonedirectory.app.service.UserDetailsService;
 
 
 @RestController
@@ -48,7 +49,7 @@ public class JWTAuthenticationController {
 	 */
 	@PostMapping("/authenticate")
 	// Create a new authentication token.
-	public ResponseEntity<JWTResponse> createAuthenticationToken(@RequestBody JWTRequest authenticationRequest) throws Exception {
+	public ResponseEntity<JWTResponse> createAuthenticationToken(@RequestBody JWTRequest authenticationRequest){
 
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
@@ -66,7 +67,7 @@ public class JWTAuthenticationController {
 	 * @return ResponseEntity<?>
 	 */
 	@PostMapping("/register")
-	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
 		
 		try{
 			return ResponseEntity.ok(userDetailsService.save(user));
