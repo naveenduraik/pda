@@ -21,9 +21,9 @@ import com.phonedirectory.app.service.JWTUserDetailsService;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	/* @Autowired
-	private JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint;
- */
+	/*  @Autowired
+	private JWTAuthenticationEntryPoint jwtAuthenticationEntryPoint; */
+ 
 	@Autowired
 	private JWTUserDetailsService jwtUserDetailsService;
 

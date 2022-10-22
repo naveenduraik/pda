@@ -41,13 +41,9 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 			jwtToken = requestTokenHeader.substring(7);
 			try {
 				username = jwtTokenUtil.getUsernameFromToken(jwtToken);
-			} catch (IllegalArgumentException e) {
-				
+			} catch (IllegalArgumentException | ExpiredJwtException e) {
 				logger.info(e);
-			} catch (ExpiredJwtException e) {
-				logger.info(e);
-				
-			}
+			} 
 		} else {
 			logger.warn("JWT Token does not begin with Bearer String");
 		}

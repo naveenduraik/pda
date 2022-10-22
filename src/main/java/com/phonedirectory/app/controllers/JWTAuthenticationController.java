@@ -66,15 +66,15 @@ public class JWTAuthenticationController {
 	 * @return ResponseEntity<?>
 	 */
 	@PostMapping("/register")
-	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
+	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
 		
 		try{
 			return ResponseEntity.ok(userDetailsService.save(user));
 
 		}
 		catch(NullPointerException ne){
-			logger.info(ne);
-		}
+		logger.info(ne);
+	}
 		return null;
 	}
 
@@ -88,7 +88,8 @@ public class JWTAuthenticationController {
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException | BadCredentialsException e) {
-			logger.info(e);
+				logger.info(e);
+			
 		} 
 	}
 	
