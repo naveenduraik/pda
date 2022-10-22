@@ -133,7 +133,7 @@ class PdaApplicationTests {
 } 
 
 	 @Test
-	 public void getAddress() throws Exception{	
+	 void getAddress() throws Exception{	
 		mockMvc.perform(MockMvcRequestBuilders.get("/address")
 						.accept(MediaType.APPLICATION_JSON))
 						.andExpect(status().isOk())
