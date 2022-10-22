@@ -14,8 +14,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phonedirectory.app.config.JWTTokenUtil;
@@ -40,6 +38,12 @@ public class JWTAuthenticationController {
 	@Autowired
 	private JWTUserDetailsService userDetailsService;
 
+	
+	/** 
+	 * @param authenticationRequest
+	 * @return ResponseEntity<?>
+	 * @throws Exception
+	 */
 	@PostMapping("/authenticate")
 	// Create a new authentication token.
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JWTRequest authenticationRequest) throws Exception {
@@ -54,6 +58,11 @@ public class JWTAuthenticationController {
 		return ResponseEntity.ok(new JWTResponse(token));
 	}
 	
+	
+	/** 
+	 * @param user
+	 * @return ResponseEntity<?>
+	 */
 	// Authenticates and saves a user.
 	@PostMapping("/register")
 	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
@@ -68,6 +77,11 @@ public class JWTAuthenticationController {
 		return null;
 	}
 
+	
+	/** 
+	 * @param username
+	 * @param password
+	 */
 	// Authenticate using the given username and password.
 	private void authenticate(String username, String password) {
 		try {
