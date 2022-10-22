@@ -121,7 +121,7 @@ class PdaApplicationTests {
 	 @Test
 	 public void setAddress() throws Exception{
 
-		String data = "{\"t_doorNo\":\"d02\",\"t_streetName\":\"Stark1\",\"t_city\":\"development\",\"t_pinCode\":\"development\",\"t_state\":\"development\",\"t_country\":\"development\",\"p_doorNo;\":\"development\",\"p_streetName;\":\"development\",\"p_city\":\"development\",\"p_pinCode\":\"development\",\"p_state\":\"development\",\"p_country\":\"development\",\"userId\":\"1\" }";
+		String data = "{\"tDoorNo\":\"d02\",\"tStreetName\":\"Stark1\",\"tCity\":\"development\",\"tPinCode\":\"development\",\"tState\":\"development\",\"tCountry\":\"development\",\"pDoorNo;\":\"development\",\"pStreetName;\":\"development\",\"pCity\":\"development\",\"pPinCode\":\"development\",\"pState\":\"development\",\"pCountry\":\"development\",\"userId\":\"1\" }";
 
 		mockMvc.perform(MockMvcRequestBuilders.post("/address")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
@@ -133,13 +133,12 @@ class PdaApplicationTests {
 } 
 
 	 @Test
-	 public void getAddress() throws Exception{		
-
+	 public void getAddress() throws Exception{	
 		mockMvc.perform(MockMvcRequestBuilders.get("/address")
 						.accept(MediaType.APPLICATION_JSON))
 						.andExpect(status().isOk())
 						.andDo(print())
-						.andExpect(MockMvcResultMatchers.jsonPath("$[*].t_country").exists())
+						.andExpect(MockMvcResultMatchers.jsonPath("$[*].tDoorNo").exists())
 						.andReturn();
 
 	 } 
