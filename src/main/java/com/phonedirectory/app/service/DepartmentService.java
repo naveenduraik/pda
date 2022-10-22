@@ -1,9 +1,6 @@
 package com.phonedirectory.app.service;
 
-
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +14,7 @@ import com.phonedirectory.app.repository.DepartmentRepository;
 public class DepartmentService {
 
     @Autowired
-    private DepartmentRepository departmentRepository;
+    private DepartmentRepository departmentRepository;   
    
 
     public List<Department> getAllDepartments(){
@@ -25,7 +22,7 @@ public class DepartmentService {
         departmentRepository.findAll().forEach(departments:: add);
         
         return departments;
-    }
+    } 
     
     public Optional<Department> getDepartment(String departmentId){
         return departmentRepository.findById(departmentId);
