@@ -20,7 +20,6 @@ import com.phonedirectory.app.model.JWTRequest;
 import com.phonedirectory.app.model.JWTResponse;
 import com.phonedirectory.app.model.UserDTO;
 import com.phonedirectory.app.service.JWTUserDetailsService;
-import com.phonedirectory.app.service.UserDetailsService;
 
 
 @RestController
@@ -28,6 +27,7 @@ import com.phonedirectory.app.service.UserDetailsService;
 
 // Authenticates the user with the given username and password.
 public class JWTAuthenticationController {
+	UserDetails userDetails;
 
 	Logger logger;
 
@@ -67,7 +67,7 @@ public class JWTAuthenticationController {
 	 * @return ResponseEntity<?>
 	 */
 	@PostMapping("/register")
-	public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
+	public ResponseEntity<com.phonedirectory.app.model.UserDetails> saveUser(@RequestBody UserDTO user) {
 		
 		try{
 			return ResponseEntity.ok(userDetailsService.save(user));
