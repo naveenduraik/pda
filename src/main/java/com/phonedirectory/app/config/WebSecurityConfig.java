@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(null, e);
 		}
 	}
 
