@@ -27,7 +27,6 @@ import com.phonedirectory.app.service.JWTUserDetailsService;
 
 // Authenticates the user with the given username and password.
 public class JWTAuthenticationController {
-	UserDetails userDetails;
 
 	Logger logger;
 
