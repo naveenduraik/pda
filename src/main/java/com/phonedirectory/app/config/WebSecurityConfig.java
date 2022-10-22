@@ -1,5 +1,6 @@
 package com.phonedirectory.app.config;
 
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +22,7 @@ import com.phonedirectory.app.service.JWTUserDetailsService;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
- 
+	Logger logger;
 	@Autowired
 	private JWTUserDetailsService jwtUserDetailsService;
 
@@ -53,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			return super.authenticationManagerBean();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(null, e);
 		}
 		return null;
 	}
@@ -69,7 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 								.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					logger.log(null, e);
 				}
 
 	}
