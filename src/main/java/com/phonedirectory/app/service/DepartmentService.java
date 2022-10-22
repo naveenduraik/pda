@@ -18,10 +18,7 @@ public class DepartmentService {
 
     @Autowired
     private DepartmentRepository departmentRepository;
-    private List<Department> departments = new ArrayList<Department>(Arrays.asList(
-        new Department("1", "NeoStark","L&D"),
-        new Department("2", "NeoJarvis","Development") 
-    ));
+   
 
     public List<Department> getAllDepartments(){
         List<Department> departments = new ArrayList<Department>();

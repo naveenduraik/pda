@@ -17,12 +17,7 @@ public class ContactService {
     @Autowired
     ContactRepository contactRepository;
 //Mutable arraylist
-    private List<Contact> contacts = new ArrayList<Contact>(Arrays.asList(
-        new Contact(1, "91","9842307770", "8072600679", 1),
-        new Contact(2, "91","9842307770", "8072600679", 1) 
-    ));
-    
-    
+      
     public List<Contact> getAllContacts(){
         List<Contact> contactList = new ArrayList<Contact>();
         contactRepository.findAll().forEach(contactList:: add);
