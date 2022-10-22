@@ -29,11 +29,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private JWTRequestFilter jwtRequestFilter;
 
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	public void configureGlobal(AuthenticationManagerBuilder auth) {
 		// configure AuthenticationManager so that it knows from where to load
 		// user for matching credentials
 		// Use BCryptPasswordEncoder
-		auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
+		try {
+			auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Bean
@@ -43,18 +48,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
+	public AuthenticationManager authenticationManagerBean()  {
+		try {
+			return super.authenticationManagerBean();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	
 	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-				httpSecurity.antMatcher("/api/**")
-    						.authorizeRequests() //
-        					.anyRequest().authenticated() //
-        					.and()
-    						.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+	protected void configure(HttpSecurity httpSecurity)  {
+				try {
+					httpSecurity.antMatcher("/api/**")
+								.authorizeRequests() //
+								.anyRequest().authenticated() //
+								.and()
+								.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 	}
 
