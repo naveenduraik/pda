@@ -19,10 +19,7 @@ public class AddressService {
     @Autowired
     AddressRepository addressRepository;
 
-    private List<Address> addressList = new ArrayList<Address>(Arrays.asList(
-        new Address(1,"sada","adad","asda","asd","asda","asda","asda","asda","adsa","asda","asda","as",1),
-        new Address(2,"sada","adad","asda","asd","asda","asda","asda","asda","adsa","asda","asda","as",2)
-    ));
+   
     
     /** 
      * @return List<Address>
