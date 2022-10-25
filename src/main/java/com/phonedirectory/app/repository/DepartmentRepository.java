@@ -7,5 +7,6 @@ import com.phonedirectory.app.model.Department;
 
 @Repository
 public interface DepartmentRepository extends CrudRepository<Department,String> {
+    Department findByUsername(int userId);
     
 }
