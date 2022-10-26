@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity httpSecurity)  {
-		// dont authenticate this particular request
+		// dont authenticate this particular request 
 		try {
 		
 			httpSecurity.csrf().disable().authorizeRequests().antMatchers("/authenticate", "/register").permitAll().
