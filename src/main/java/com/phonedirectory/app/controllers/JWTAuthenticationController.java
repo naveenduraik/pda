@@ -10,6 +10,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,6 @@ import com.phonedirectory.app.service.JWTUserDetailsService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8080/", allowedHeaders = "*")
-
 // Authenticates the user with the given username and password.
 public class JWTAuthenticationController {
 
@@ -46,18 +46,23 @@ public class JWTAuthenticationController {
 	 * @return ResponseEntity<?>
 	 * @throws Exception
 	 */
+	
 	@PostMapping("/authenticate")
-	// Create a new authentication token.
 	public ResponseEntity<JWTResponse> createAuthenticationToken(@RequestBody JWTRequest authenticationRequest){
 
-		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-
-		final UserDetails userDetails = userDetailsService
+		try {
+			authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+			final UserDetails userDetails = userDetailsService
 				.loadUserByUsername(authenticationRequest.getUsername());
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
 		return ResponseEntity.ok(new JWTResponse(token));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 	
 	
@@ -84,7 +89,7 @@ public class JWTAuthenticationController {
 	 * @param password
 	 */
 	// Authenticate using the given username and password.
-	private void authenticate(String username, String password) {
+	private void authenticate(String username, String password) throws UsernameNotFoundException{
 		try {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 		} catch (DisabledException | BadCredentialsException e) {
