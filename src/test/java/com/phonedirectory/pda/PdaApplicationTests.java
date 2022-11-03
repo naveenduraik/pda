@@ -55,8 +55,8 @@ class PdaApplicationTests {
 			   mockMvc.perform(MockMvcRequestBuilders.post("/authenticate")
 		        .contentType(MediaType.APPLICATION_JSON)
 				.content(dataOne)
-				.accept(MediaType.APPLICATION_JSON))
-				//.header(HttpHeaders.AUTHORIZATION))
+				.accept(MediaType.APPLICATION_JSON)
+				.header(HttpHeaders.AUTHORIZATION,"bearer"))
 				.andExpect(status().isOk())
 				//.andExpect(jsonPath("$").value("true"))
 				.andReturn();  		
@@ -69,7 +69,9 @@ class PdaApplicationTests {
 		mockMvc.perform(MockMvcRequestBuilders.post("/contacts")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
 		 	 			.content(data)
-		 	 			.accept(MediaType.APPLICATION_JSON))
+		 	 			.accept(MediaType.APPLICATION_JSON)
+						 .header(HttpHeaders.AUTHORIZATION,"bearer"))
+
 						.andExpect(status().isOk())
 		 	        	//.andExpect(jsonPath("$").value("true"))
 		 	        	.andReturn();						
