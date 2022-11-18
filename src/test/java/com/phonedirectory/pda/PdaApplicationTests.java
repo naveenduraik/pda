@@ -1,5 +1,6 @@
 package com.phonedirectory.pda;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.phonedirectory.app.PdaApplication;
 
@@ -30,7 +32,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 class PdaApplicationTests {	
 	
 	@Autowired
-	private  MockMvc mockMvc ;
+	private  MockMvc mockMvc;
+
 
 	// Register a new user.
 	@Test
@@ -51,12 +54,12 @@ class PdaApplicationTests {
 	   @Test
 	void authenticationCheck() throws Exception {			
 	//login
-		String dataOne = "{\"username\":\"durai121\",\"password\":\"test@123\"}";	
+		String dataOne = "{\"username\":\"naveendurai\",\"password\":\"test@123\"}";	
 			   mockMvc.perform(MockMvcRequestBuilders.post("/authenticate")
 		        .contentType(MediaType.APPLICATION_JSON)
 				.content(dataOne)
-				.accept(MediaType.APPLICATION_JSON)
-				.header(HttpHeaders.AUTHORIZATION,"bearer"))
+				.accept(MediaType.APPLICATION_JSON))
+				//.header(HttpHeaders.AUTHORIZATION,"bearer"))
 				.andExpect(status().isOk())
 				//.andExpect(jsonPath("$").value("true"))
 				.andReturn();  		
@@ -65,12 +68,12 @@ class PdaApplicationTests {
 	// Set a contact.
 	@Test
 	void setContact() throws Exception{
-		String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
+		String data = "{\"contactId\":\"2\",\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"1\"}";	
 		mockMvc.perform(MockMvcRequestBuilders.post("/contacts")
 		 	 			.contentType(MediaType.APPLICATION_JSON)
 		 	 			.content(data)
-		 	 			.accept(MediaType.APPLICATION_JSON)
-						 .header(HttpHeaders.AUTHORIZATION,"bearer"))
+		 	 			.accept(MediaType.APPLICATION_JSON))
+						// .header(HttpHeaders.AUTHORIZATION,"bearer"))
 
 						.andExpect(status().isOk())
 		 	        	//.andExpect(jsonPath("$").value("true"))
@@ -78,15 +81,19 @@ class PdaApplicationTests {
 	}
 
 	// Get a single contact.
+
+	
 	@Test
 	void getContact() throws Exception{
+		
+
 		//String data = "{\"countryCode\":\"91\",\"primaryMobileNumber\":\"91\",\"secondaryMobileNumber\":\"91\",\"userId\":\"2\"}";	
-		 mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
+		  mockMvc.perform(MockMvcRequestBuilders.get("/contacts")
 						.accept(MediaType.APPLICATION_JSON))
 						.andExpect(MockMvcResultMatchers.status().isOk())
 						.andDo(print())
 						//.andExpect(MockMvcResultMatchers.jsonPath("$[*].primaryMobileNumber").value("91"))
-						.andReturn();
+						.andReturn(); 
 
 			
 	}					
